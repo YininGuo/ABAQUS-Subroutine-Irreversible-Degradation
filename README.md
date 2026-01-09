@@ -1,4 +1,4 @@
-# Abaqus USDFLD – Tmax (irreversible) field for “no recovery” degradation
+# Abaqus USDFLD Tmax (irreversible) field for material degradation
 
 This repository provides an Abaqus/Standard `USDFLD` subroutine that tracks the **peak temperature** at each integration point:
 
