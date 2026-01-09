@@ -1,4 +1,4 @@
-# Abaqus USDFLD Tmax (irreversible) field for material degradation
+# Abaqus Irreversible Material subroutine (AIMs)
 
 This repository provides an Abaqus/Standard `USDFLD` subroutine that tracks the **peak temperature** at each integration point:
 
