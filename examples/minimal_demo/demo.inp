@@ -1,0 +1,59 @@
+*Heading
+** Minimal demo: USDFLD tracks Tmax (irreversible) using STATEV/FIELD
+** Purpose: heat up then cool down, SDV1/FV1 should plateau during cooling.
+*Preprint, echo=NO, model=NO, history=NO, contact=NO
+
+*Part, name=P1
+*Node
+1, 0.,  0.
+2, 10., 0.
+3, 10., 10.
+4, 0.,  10.
+*Element, type=CPS4
+1, 1,2,3,4
+*Elset, elset=EALL
+1,
+*Nset, nset=NALL, generate
+1,4,1
+*Solid Section, elset=EALL, material=MAT1, thickness=1.
+,
+*End Part
+
+*Assembly, name=A1
+*Instance, name=P1-1, part=P1
+*End Instance
+*Nset, nset=FIX, instance=P1-1
+1,4
+*Nset, nset=NALLA, instance=P1-1
+1,2,3,4
+*End Assembly
+
+*Material, name=MAT1
+*Depvar
+1,
+*Elastic, dependencies=1
+210000., 0.3, 20.
+210000., 0.3, 1200.
+
+*Amplitude, name=TABS, time=total time
+0.,  20.
+1.,  800.
+2.,  20.
+
+*Step, name=TEMP_CYCLE, nlgeom=NO
+*Static
+1., 2., 1e-05, 1.
+
+*Boundary
+FIX, 1,2, 0.
+
+** Apply temperature = 1 * amplitude(T) => absolute temperature
+*Temperature, amplitude=TABS
+NALLA, 1.
+
+*Output, field, frequency=1
+*Node Output
+NT, U
+*Element Output
+S, SDV, FV
+*End Step
