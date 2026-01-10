@@ -15,7 +15,7 @@ This enables **irreversible** material degradation during cooling: your material
 - `docs/verification.md` — how to verify plateau behaviour in ODB
 - `.gitignore` — prevents pushing big Abaqus files by accident
 
-## How it works (in one minute)
+## How it works
 
 At every increment and integration point:
 
