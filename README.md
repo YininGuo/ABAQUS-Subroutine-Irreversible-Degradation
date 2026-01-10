@@ -1,6 +1,6 @@
 # Abaqus Irreversible Material subroutine (AIMs)
 
-This repository provides an Abaqus/Standard `USDFLD` subroutine that tracks the **peak temperature** at each integration point:
+This repository provides an ABAQUS `USDFLD` subroutine that tracks the **peak temperature** at each integration point:
 
 - `STATEV(1) = Tmax` (°C)
 - `FIELD(1)  = Tmax` (°C)
